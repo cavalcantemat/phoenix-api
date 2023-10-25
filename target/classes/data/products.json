@@ -1,0 +1,242 @@
+[
+    {
+      "id": 1,
+      "team": "Barcelona",
+      "category": "Futebol",
+      "color": "Azul e grená",
+      "price": 39.99,
+      "storage": 150
+    },
+    {
+      "id": 2,
+      "team": "Real Madrid",
+      "category": "Futebol",
+      "color": "Branco",
+      "price": 42.99,
+      "storage": 120
+    },
+    {
+      "id": 3,
+      "team": "Manchester United",
+      "category": "Futebol",
+      "color": "Vermelho",
+      "price": 34.99,
+      "storage": 100
+    },
+    {
+      "id": 4,
+      "team": "Chelsea",
+      "category": "Futebol",
+      "color": "Azul",
+      "price": 36.99,
+      "storage": 110
+    },
+    {
+      "id": 5,
+      "team": "Bayern de Munique",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 38.99,
+      "storage": 95
+    },
+    {
+      "id": 6,
+      "team": "Paris Saint-Germain",
+      "category": "Futebol",
+      "color": "Azul e vermelho",
+      "price": 41.99,
+      "storage": 105
+    },
+    {
+      "id": 7,
+      "team": "Juventus",
+      "category": "Futebol",
+      "color": "Preto e branco",
+      "price": 37.99,
+      "storage": 85
+    },
+    {
+      "id": 8,
+      "team": "Liverpool",
+      "category": "Futebol",
+      "color": "Vermelho",
+      "price": 40.99,
+      "storage": 92
+    },
+    {
+      "id": 9,
+      "team": "Atlético de Madrid",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 35.99,
+      "storage": 78
+    },
+    {
+      "id": 10,
+      "team": "Arsenal",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 39.99,
+      "storage": 88
+    },
+    {
+      "id": 11,
+      "team": "Borussia Dortmund",
+      "category": "Futebol",
+      "color": "Amarelo e preto",
+      "price": 33.99,
+      "storage": 93
+    },
+    {
+      "id": 12,
+      "team": "Inter de Milão",
+      "category": "Futebol",
+      "color": "Azul e preto",
+      "price": 36.99,
+      "storage": 87
+    },
+    {
+      "id": 13,
+      "team": "AC Milan",
+      "category": "Futebol",
+      "color": "Vermelho e preto",
+      "price": 38.99,
+      "storage": 80
+    },
+    {
+      "id": 14,
+      "team": "Tottenham Hotspur",
+      "category": "Futebol",
+      "color": "Branco e azul",
+      "price": 34.99,
+      "storage": 97
+    },
+    {
+      "id": 15,
+      "team": "Ajax",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 37.99,
+      "storage": 99
+    },
+    {
+      "id": 16,
+      "team": "Manchester City",
+      "category": "Futebol",
+      "color": "Azul",
+      "price": 40.99,
+      "storage": 84
+    },
+    {
+      "id": 17,
+      "team": "Napoli",
+      "category": "Futebol",
+      "color": "Azul",
+      "price": 42.99,
+      "storage": 79
+    },
+    {
+      "id": 18,
+      "team": "Roma",
+      "category": "Futebol",
+      "color": "Vermelho e amarelo",
+      "price": 34.99,
+      "storage": 96
+    },
+    {
+      "id": 19,
+      "team": "Bayer Leverkusen",
+      "category": "Futebol",
+      "color": "Vermelho e preto",
+      "price": 36.99,
+      "storage": 91
+    },
+    {
+      "id": 20,
+      "team": "Sevilla",
+      "category": "Futebol",
+      "color": "Branco e vermelho",
+      "price": 41.99,
+      "storage": 94
+    },
+    {
+      "id": 21,
+      "team": "Lyon",
+      "category": "Futebol",
+      "color": "Azul, branco e vermelho",
+      "price": 39.99,
+      "storage": 83
+    },
+    {
+      "id": 22,
+      "team": "Everton",
+      "category": "Futebol",
+      "color": "Azul",
+      "price": 37.99,
+      "storage": 98
+    },
+    {
+      "id": 23,
+      "team": "Leicester City",
+      "category": "Futebol",
+      "color": "Azul",
+      "price": 38.99,
+      "storage": 86
+    },
+    {
+      "id": 24,
+      "team": "Wolverhampton",
+      "category": "Futebol",
+      "color": "Laranja e preto",
+      "price": 35.99,
+      "storage": 82
+    },
+    {
+      "id": 25,
+      "team": "Athletic Bilbao",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 40.99,
+      "storage": 89
+    },
+    {
+      "id": 26,
+      "team": "Valencia",
+      "category": "Futebol",
+      "color": "Laranja",
+      "price": 33.99,
+      "storage": 77
+    },
+    {
+      "id": 27,
+      "team": "Villarreal",
+      "category": "Futebol",
+      "color": "Amarelo",
+      "price": 42.99,
+      "storage": 81
+    },
+    {
+      "id": 28,
+      "team": "Celtic",
+      "category": "Futebol",
+      "color": "Verde e branco",
+      "price": 34.99,
+      "storage": 90
+    },
+    {
+      "id": 29,
+      "team": "Porto",
+      "category": "Futebol",
+      "color": "Azul e branco",
+      "price": 36.99,
+      "storage": 75
+    },
+    {
+      "id": 30,
+      "team": "Benfica",
+      "category": "Futebol",
+      "color": "Vermelho e branco",
+      "price": 38.99,
+      "storage": 88
+    }
+]
