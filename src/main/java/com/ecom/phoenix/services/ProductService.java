@@ -28,4 +28,27 @@ public class ProductService {
             return null;
         }
     }
+
+    public Product getById(Integer id) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        TypeReference<List<Product>> typeReference = new TypeReference<>() {};
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/products.json");
+
+        try {
+            List<Product> products = objectMapper.readValue(inputStream, typeReference);
+            Product foundProduct = null;
+
+            for (Product product : products) {
+                if (product.getId() == id) {
+                    foundProduct = product;
+                    break;
+                }
+            }
+
+            return foundProduct;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
