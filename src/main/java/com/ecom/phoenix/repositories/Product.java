@@ -7,17 +7,19 @@ public class Product {
     private String color;
     private double price;
     private int storage;
+    private String directory;
 
     public Product() {
     }
 
-    public Product(long id, String team, String category, String color, double price, int storage) {
+    public Product(long id, String team, String category, String color, double price, int storage, String directory) {
         this.id = id;
         this.team = team;
         this.category = category;
         this.color = color;
         this.price = price;
         this.storage = storage;
+        this.directory = directory;
     }
 
 
@@ -69,11 +71,20 @@ public class Product {
         this.storage = storage;
     }
 
+    public String getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(String directory) {
+        this.directory = directory;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", team='" + team + '\'' +
+                ", directory='" + directory + '\'' +
                 ", category='" + category + '\'' +
                 ", color='" + color + '\'' +
                 ", price=" + price +

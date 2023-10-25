@@ -2,6 +2,7 @@
     {
       "id": 1,
       "team": "Barcelona",
+      "directory": "barcelona",
       "category": "Futebol",
       "color": "Azul e grená",
       "price": 39.99,
@@ -10,6 +11,7 @@
     {
       "id": 2,
       "team": "Real Madrid",
+      "directory": "real-madrid",
       "category": "Futebol",
       "color": "Branco",
       "price": 42.99,
@@ -18,6 +20,7 @@
     {
       "id": 3,
       "team": "Manchester United",
+      "directory": "manchester-united",
       "category": "Futebol",
       "color": "Vermelho",
       "price": 34.99,
@@ -26,6 +29,7 @@
     {
       "id": 4,
       "team": "Chelsea",
+      "directory": "chelsea",
       "category": "Futebol",
       "color": "Azul",
       "price": 36.99,
@@ -34,6 +38,7 @@
     {
       "id": 5,
       "team": "Bayern de Munique",
+      "directory": "bayern",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 38.99,
@@ -42,6 +47,7 @@
     {
       "id": 6,
       "team": "Paris Saint-Germain",
+      "directory": "psg",
       "category": "Futebol",
       "color": "Azul e vermelho",
       "price": 41.99,
@@ -50,6 +56,7 @@
     {
       "id": 7,
       "team": "Juventus",
+      "directory": "juventus",
       "category": "Futebol",
       "color": "Preto e branco",
       "price": 37.99,
@@ -58,6 +65,7 @@
     {
       "id": 8,
       "team": "Liverpool",
+      "directory": "liverpool",
       "category": "Futebol",
       "color": "Vermelho",
       "price": 40.99,
@@ -66,6 +74,7 @@
     {
       "id": 9,
       "team": "Atlético de Madrid",
+      "directory": "atletico-de-madrid",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 35.99,
@@ -74,6 +83,7 @@
     {
       "id": 10,
       "team": "Arsenal",
+      "directory": "arsenal",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 39.99,
@@ -82,6 +92,7 @@
     {
       "id": 11,
       "team": "Borussia Dortmund",
+      "directory": "borussia-dortmund",
       "category": "Futebol",
       "color": "Amarelo e preto",
       "price": 33.99,
@@ -90,6 +101,7 @@
     {
       "id": 12,
       "team": "Inter de Milão",
+      "directory": "inter-de-milao",
       "category": "Futebol",
       "color": "Azul e preto",
       "price": 36.99,
@@ -98,6 +110,7 @@
     {
       "id": 13,
       "team": "AC Milan",
+      "directory": "milan",
       "category": "Futebol",
       "color": "Vermelho e preto",
       "price": 38.99,
@@ -106,6 +119,7 @@
     {
       "id": 14,
       "team": "Tottenham Hotspur",
+      "directory": "tottenham-hotspur",
       "category": "Futebol",
       "color": "Branco e azul",
       "price": 34.99,
@@ -114,6 +128,7 @@
     {
       "id": 15,
       "team": "Ajax",
+      "directory": "ajax",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 37.99,
@@ -122,6 +137,7 @@
     {
       "id": 16,
       "team": "Manchester City",
+      "directory": "manchester-city",
       "category": "Futebol",
       "color": "Azul",
       "price": 40.99,
@@ -130,6 +146,7 @@
     {
       "id": 17,
       "team": "Napoli",
+      "directory": "napoli",
       "category": "Futebol",
       "color": "Azul",
       "price": 42.99,
@@ -138,6 +155,7 @@
     {
       "id": 18,
       "team": "Roma",
+      "directory": "roma",
       "category": "Futebol",
       "color": "Vermelho e amarelo",
       "price": 34.99,
@@ -146,6 +164,7 @@
     {
       "id": 19,
       "team": "Bayer Leverkusen",
+      "directory": "bayer-leverkusen",
       "category": "Futebol",
       "color": "Vermelho e preto",
       "price": 36.99,
@@ -154,6 +173,7 @@
     {
       "id": 20,
       "team": "Sevilla",
+      "directory": "sevilla",
       "category": "Futebol",
       "color": "Branco e vermelho",
       "price": 41.99,
@@ -162,6 +182,7 @@
     {
       "id": 21,
       "team": "Lyon",
+      "directory": "lyon",
       "category": "Futebol",
       "color": "Azul, branco e vermelho",
       "price": 39.99,
@@ -170,6 +191,7 @@
     {
       "id": 22,
       "team": "Everton",
+      "directory": "everton",
       "category": "Futebol",
       "color": "Azul",
       "price": 37.99,
@@ -178,6 +200,7 @@
     {
       "id": 23,
       "team": "Leicester City",
+      "directory": "leicester-city",
       "category": "Futebol",
       "color": "Azul",
       "price": 38.99,
@@ -186,6 +209,7 @@
     {
       "id": 24,
       "team": "Wolverhampton",
+      "directory": "wolverhampton",
       "category": "Futebol",
       "color": "Laranja e preto",
       "price": 35.99,
@@ -194,6 +218,7 @@
     {
       "id": 25,
       "team": "Athletic Bilbao",
+      "directory": "athletic-bilbao",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 40.99,
@@ -202,6 +227,7 @@
     {
       "id": 26,
       "team": "Valencia",
+      "directory": "valencia",
       "category": "Futebol",
       "color": "Laranja",
       "price": 33.99,
@@ -210,6 +236,7 @@
     {
       "id": 27,
       "team": "Villarreal",
+      "directory": "villarreal",
       "category": "Futebol",
       "color": "Amarelo",
       "price": 42.99,
@@ -218,6 +245,7 @@
     {
       "id": 28,
       "team": "Celtic",
+      "directory": "celtic",
       "category": "Futebol",
       "color": "Verde e branco",
       "price": 34.99,
@@ -226,6 +254,7 @@
     {
       "id": 29,
       "team": "Porto",
+      "directory": "porto",
       "category": "Futebol",
       "color": "Azul e branco",
       "price": 36.99,
@@ -234,6 +263,7 @@
     {
       "id": 30,
       "team": "Benfica",
+      "directory": "benfica",
       "category": "Futebol",
       "color": "Vermelho e branco",
       "price": 38.99,
