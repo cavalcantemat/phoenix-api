@@ -4,7 +4,8 @@
       "team": "Barcelona",
       "directory": "barcelona",
       "category": "Futebol",
-      "color": "Azul e grená",
+      "league": "la-liga",
+      "color": ["blue", "garnet"],
       "price": 39.99,
       "storage": 150
     },
@@ -13,7 +14,8 @@
       "team": "Real Madrid",
       "directory": "real-madrid",
       "category": "Futebol",
-      "color": "Branco",
+      "league": "la-liga",
+      "color": ["white"],
       "price": 42.99,
       "storage": 120
     },
@@ -22,7 +24,8 @@
       "team": "Manchester United",
       "directory": "manchester-united",
       "category": "Futebol",
-      "color": "Vermelho",
+      "league": "premier-league",
+      "color": ["red"],
       "price": 34.99,
       "storage": 100
     },
@@ -31,16 +34,18 @@
       "team": "Chelsea",
       "directory": "chelsea",
       "category": "Futebol",
-      "color": "Azul",
+      "league": "premier-league",
+      "color": ["blue"],
       "price": 36.99,
       "storage": 110
     },
     {
       "id": 5,
-      "team": "Bayern de Munique",
+      "team": "Bayern Munich",
       "directory": "bayern",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "bundesliga",
+      "color": ["red", "white"],
       "price": 38.99,
       "storage": 95
     },
@@ -49,7 +54,8 @@
       "team": "Paris Saint-Germain",
       "directory": "psg",
       "category": "Futebol",
-      "color": "Azul e vermelho",
+      "league": "ligue-1",
+      "color": ["blue", "red"],
       "price": 41.99,
       "storage": 105
     },
@@ -58,7 +64,8 @@
       "team": "Juventus",
       "directory": "juventus",
       "category": "Futebol",
-      "color": "Preto e branco",
+      "league": "serie-a",
+      "color": ["black", "white"],
       "price": 37.99,
       "storage": 85
     },
@@ -67,16 +74,18 @@
       "team": "Liverpool",
       "directory": "liverpool",
       "category": "Futebol",
-      "color": "Vermelho",
+      "league": "premier-league",
+      "color": ["red"],
       "price": 40.99,
       "storage": 92
     },
     {
       "id": 9,
-      "team": "Atlético de Madrid",
+      "team": "Atletico Madrid",
       "directory": "atletico-de-madrid",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "la-liga",
+      "color": ["red", "white"],
       "price": 35.99,
       "storage": 78
     },
@@ -85,7 +94,8 @@
       "team": "Arsenal",
       "directory": "arsenal",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "premier-league",
+      "color": ["red", "white"],
       "price": 39.99,
       "storage": 88
     },
@@ -94,16 +104,18 @@
       "team": "Borussia Dortmund",
       "directory": "borussia-dortmund",
       "category": "Futebol",
-      "color": "Amarelo e preto",
+      "league": "bundesliga",
+      "color": ["yellow", "black"],
       "price": 33.99,
       "storage": 93
     },
     {
       "id": 12,
-      "team": "Inter de Milão",
+      "team": "Inter Milan",
       "directory": "inter-de-milao",
       "category": "Futebol",
-      "color": "Azul e preto",
+      "league": "serie-a",
+      "color": ["blue", "black"],
       "price": 36.99,
       "storage": 87
     },
@@ -112,7 +124,8 @@
       "team": "AC Milan",
       "directory": "milan",
       "category": "Futebol",
-      "color": "Vermelho e preto",
+      "league": "serie-a",
+      "color": ["red", "black"],
       "price": 38.99,
       "storage": 80
     },
@@ -121,7 +134,8 @@
       "team": "Tottenham Hotspur",
       "directory": "tottenham-hotspur",
       "category": "Futebol",
-      "color": "Branco e azul",
+      "league": "premier-league",
+      "color": ["white", "blue"],
       "price": 34.99,
       "storage": 97
     },
@@ -130,7 +144,8 @@
       "team": "Ajax",
       "directory": "ajax",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "eredivisie",
+      "color": ["red", "white"],
       "price": 37.99,
       "storage": 99
     },
@@ -139,7 +154,8 @@
       "team": "Manchester City",
       "directory": "manchester-city",
       "category": "Futebol",
-      "color": "Azul",
+      "league": "premier-league",
+      "color": ["blue"],
       "price": 40.99,
       "storage": 84
     },
@@ -148,7 +164,8 @@
       "team": "Napoli",
       "directory": "napoli",
       "category": "Futebol",
-      "color": "Azul",
+      "league": "serie-a",
+      "color": ["blue"],
       "price": 42.99,
       "storage": 79
     },
@@ -157,7 +174,8 @@
       "team": "Roma",
       "directory": "roma",
       "category": "Futebol",
-      "color": "Vermelho e amarelo",
+      "league": "serie-a",
+      "color": ["red", "yellow"],
       "price": 34.99,
       "storage": 96
     },
@@ -166,7 +184,8 @@
       "team": "Bayer Leverkusen",
       "directory": "bayer-leverkusen",
       "category": "Futebol",
-      "color": "Vermelho e preto",
+      "league": "bundesliga",
+      "color": ["red", "black"],
       "price": 36.99,
       "storage": 91
     },
@@ -175,7 +194,8 @@
       "team": "Sevilla",
       "directory": "sevilla",
       "category": "Futebol",
-      "color": "Branco e vermelho",
+      "league": "la-liga",
+      "color": ["white", "red"],
       "price": 41.99,
       "storage": 94
     },
@@ -184,7 +204,8 @@
       "team": "Lyon",
       "directory": "lyon",
       "category": "Futebol",
-      "color": "Azul, branco e vermelho",
+      "league": "ligue-1",
+      "color": ["blue", "white", "red"],
       "price": 39.99,
       "storage": 83
     },
@@ -193,7 +214,8 @@
       "team": "Everton",
       "directory": "everton",
       "category": "Futebol",
-      "color": "Azul",
+      "league": "premier-league",
+      "color": ["blue"],
       "price": 37.99,
       "storage": 98
     },
@@ -202,7 +224,8 @@
       "team": "Leicester City",
       "directory": "leicester-city",
       "category": "Futebol",
-      "color": "Azul",
+      "league": "premier-league",
+      "color": ["blue"],
       "price": 38.99,
       "storage": 86
     },
@@ -211,7 +234,8 @@
       "team": "Wolverhampton",
       "directory": "wolverhampton",
       "category": "Futebol",
-      "color": "Laranja e preto",
+      "league": "premier-league",
+      "color": ["orange", "black"],
       "price": 35.99,
       "storage": 82
     },
@@ -220,7 +244,8 @@
       "team": "Athletic Bilbao",
       "directory": "athletic-bilbao",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "la-liga",
+      "color": ["red", "white"],
       "price": 40.99,
       "storage": 89
     },
@@ -229,7 +254,8 @@
       "team": "Valencia",
       "directory": "valencia",
       "category": "Futebol",
-      "color": "Laranja",
+      "league": "la-liga",
+      "color": ["orange"],
       "price": 33.99,
       "storage": 77
     },
@@ -238,7 +264,8 @@
       "team": "Villarreal",
       "directory": "villarreal",
       "category": "Futebol",
-      "color": "Amarelo",
+      "league": "la-liga",
+      "color": ["yellow"],
       "price": 42.99,
       "storage": 81
     },
@@ -247,7 +274,8 @@
       "team": "Celtic",
       "directory": "celtic",
       "category": "Futebol",
-      "color": "Verde e branco",
+      "league": "la-liga",
+      "color": ["green", "white"],
       "price": 34.99,
       "storage": 90
     },
@@ -256,7 +284,8 @@
       "team": "Porto",
       "directory": "porto",
       "category": "Futebol",
-      "color": "Azul e branco",
+      "league": "primeira-liga",
+      "color": ["blue", "white"],
       "price": 36.99,
       "storage": 75
     },
@@ -265,7 +294,8 @@
       "team": "Benfica",
       "directory": "benfica",
       "category": "Futebol",
-      "color": "Vermelho e branco",
+      "league": "primeira-liga",
+      "color": ["red", "white"],
       "price": 38.99,
       "storage": 88
     }

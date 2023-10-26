@@ -1,18 +1,21 @@
 package com.ecom.phoenix.repositories;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 public class Product {
     private long id;
     private String team;
     private String category;
-    private String color;
+    private ArrayNode color;
     private double price;
     private int storage;
     private String directory;
+    private String league;
 
     public Product() {
     }
 
-    public Product(long id, String team, String category, String color, double price, int storage, String directory) {
+    public Product(long id, String team, String category, ArrayNode color, double price, int storage, String directory, String league) {
         this.id = id;
         this.team = team;
         this.category = category;
@@ -20,6 +23,7 @@ public class Product {
         this.price = price;
         this.storage = storage;
         this.directory = directory;
+        this.league = league;
     }
 
 
@@ -47,11 +51,14 @@ public class Product {
         this.category = category;
     }
 
-    public String getColor() {
+    public ArrayNode getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(ArrayNode color) {
+        if( color != null && color.isNull() && color.get(1) != null && color.get(1).asText().equals("null")){
+            color = null;
+        }
         this.color = color;
     }
 
@@ -79,6 +86,14 @@ public class Product {
         this.directory = directory;
     }
 
+    public String getLeague() {
+        return league;
+    }
+
+    public void setLeague(String league) {
+        this.league = league;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -86,6 +101,7 @@ public class Product {
                 ", team='" + team + '\'' +
                 ", directory='" + directory + '\'' +
                 ", category='" + category + '\'' +
+                ", league='" + league + '\'' +
                 ", color='" + color + '\'' +
                 ", price=" + price +
                 ", storage=" + storage +
