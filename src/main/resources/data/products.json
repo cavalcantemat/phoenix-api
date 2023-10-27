@@ -6,7 +6,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["blue", "garnet"],
-      "price": 39.99,
+      "price": 139.99,
       "storage": 150
     },
     {
@@ -16,7 +16,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["white"],
-      "price": 42.99,
+      "price": 142.99,
       "storage": 120
     },
     {
@@ -26,7 +26,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red"],
-      "price": 34.99,
+      "price": 134.99,
       "storage": 100
     },
     {
@@ -36,7 +36,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
-      "price": 36.99,
+      "price": 136.99,
       "storage": 110
     },
     {
@@ -46,7 +46,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["red", "white"],
-      "price": 38.99,
+      "price": 138.99,
       "storage": 95
     },
     {
@@ -56,7 +56,7 @@
       "category": "Futebol",
       "league": "ligue-1",
       "color": ["blue", "red"],
-      "price": 41.99,
+      "price": 141.99,
       "storage": 105
     },
     {
@@ -66,7 +66,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["black", "white"],
-      "price": 37.99,
+      "price": 137.99,
       "storage": 85
     },
     {
@@ -76,7 +76,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red"],
-      "price": 40.99,
+      "price": 140.99,
       "storage": 92
     },
     {
@@ -86,7 +86,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["red", "white"],
-      "price": 35.99,
+      "price": 135.99,
       "storage": 78
     },
     {
@@ -96,7 +96,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red", "white"],
-      "price": 39.99,
+      "price": 139.99,
       "storage": 88
     },
     {
@@ -106,7 +106,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["yellow", "black"],
-      "price": 33.99,
+      "price": 133.99,
       "storage": 93
     },
     {
@@ -116,7 +116,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["blue", "black"],
-      "price": 36.99,
+      "price": 136.99,
       "storage": 87
     },
     {
@@ -126,7 +126,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["red", "black"],
-      "price": 38.99,
+      "price": 138.99,
       "storage": 80
     },
     {
@@ -136,7 +136,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["white", "blue"],
-      "price": 34.99,
+      "price": 134.99,
       "storage": 97
     },
     {
@@ -146,7 +146,7 @@
       "category": "Futebol",
       "league": "eredivisie",
       "color": ["red", "white"],
-      "price": 37.99,
+      "price": 137.99,
       "storage": 99
     },
     {
@@ -156,7 +156,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
-      "price": 40.99,
+      "price": 140.99,
       "storage": 84
     },
     {
@@ -166,7 +166,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["blue"],
-      "price": 42.99,
+      "price": 142.99,
       "storage": 79
     },
     {
@@ -176,7 +176,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["red", "yellow"],
-      "price": 34.99,
+      "price": 134.99,
       "storage": 96
     },
     {
@@ -186,7 +186,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["red", "black"],
-      "price": 36.99,
+      "price": 136.99,
       "storage": 91
     },
     {
@@ -196,7 +196,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["white", "red"],
-      "price": 41.99,
+      "price": 141.99,
       "storage": 94
     },
     {
@@ -206,7 +206,7 @@
       "category": "Futebol",
       "league": "ligue-1",
       "color": ["blue", "white", "red"],
-      "price": 39.99,
+      "price": 139.99,
       "storage": 83
     },
     {
@@ -216,7 +216,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
-      "price": 37.99,
+      "price": 137.99,
       "storage": 98
     },
     {
@@ -226,7 +226,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
-      "price": 38.99,
+      "price": 138.99,
       "storage": 86
     },
     {
@@ -236,7 +236,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["orange", "black"],
-      "price": 35.99,
+      "price": 135.99,
       "storage": 82
     },
     {
@@ -246,7 +246,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["red", "white"],
-      "price": 40.99,
+      "price": 140.99,
       "storage": 89
     },
     {
@@ -256,7 +256,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["orange"],
-      "price": 33.99,
+      "price": 133.99,
       "storage": 77
     },
     {
@@ -266,7 +266,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["yellow"],
-      "price": 42.99,
+      "price": 142.99,
       "storage": 81
     },
     {
@@ -276,7 +276,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["green", "white"],
-      "price": 34.99,
+      "price": 134.99,
       "storage": 90
     },
     {
@@ -286,7 +286,7 @@
       "category": "Futebol",
       "league": "primeira-liga",
       "color": ["blue", "white"],
-      "price": 36.99,
+      "price": 136.99,
       "storage": 75
     },
     {
@@ -296,7 +296,7 @@
       "category": "Futebol",
       "league": "primeira-liga",
       "color": ["red", "white"],
-      "price": 38.99,
+      "price": 138.99,
       "storage": 88
     }
 ]
