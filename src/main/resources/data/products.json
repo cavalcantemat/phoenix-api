@@ -6,6 +6,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["blue", "garnet"],
+      "description": "",
       "price": 139.99,
       "storage": 150
     },
@@ -15,7 +16,8 @@
       "directory": "real-madrid",
       "category": "Futebol",
       "league": "la-liga",
-      "color": ["white"],
+      "colcor": ["white"],
+      "description": "A tradição ganha um toque de ouro nesta camisa 1 do Real Madrid 23/24. Mantendo uma base toda branca e elegante, o uniforme continua a linha do design imponente, produzindo uma camisa leve inspirada na lendária história do futebol. <br> <br> Homenageando os uniformes mais antigos, os detalhes dourados dos uniformes anteriores foram reintroduzidos junto com o tom azul-marinho. Uma estampa sublimada atualiza a clássica cor branca e uma nova silhueta dá um toque mais casual. O tecido HEAT.RDY maximiza o fluxo de ar para manter sua pele refrescada e o escudo estampado por calor, além da inscrição \" ¡Hala Madrid!\" na gola mostram sua mentalidade vitoriosa.",
       "price": 142.99,
       "storage": 120
     },
@@ -26,6 +28,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red"],
+      "description": "",
       "price": 134.99,
       "storage": 100
     },
@@ -36,6 +39,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
+      "description": "",
       "price": 136.99,
       "storage": 110
     },
@@ -46,6 +50,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["red", "white"],
+      "description": "",
       "price": 138.99,
       "storage": 95
     },
@@ -56,6 +61,7 @@
       "category": "Futebol",
       "league": "ligue-1",
       "color": ["blue", "red"],
+      "description": "",
       "price": 141.99,
       "storage": 105
     },
@@ -66,6 +72,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["black", "white"],
+      "description": "",
       "price": 137.99,
       "storage": 85
     },
@@ -76,6 +83,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red"],
+      "description": "",
       "price": 140.99,
       "storage": 92
     },
@@ -86,6 +94,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["red", "white"],
+      "description": "",
       "price": 135.99,
       "storage": 78
     },
@@ -96,6 +105,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["red", "white"],
+      "description": "",
       "price": 139.99,
       "storage": 88
     },
@@ -106,6 +116,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["yellow", "black"],
+      "description": "",
       "price": 133.99,
       "storage": 93
     },
@@ -116,6 +127,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["blue", "black"],
+      "description": "",
       "price": 136.99,
       "storage": 87
     },
@@ -126,6 +138,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["red", "black"],
+      "description": "",
       "price": 138.99,
       "storage": 80
     },
@@ -136,6 +149,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["white", "blue"],
+      "description": "",
       "price": 134.99,
       "storage": 97
     },
@@ -146,6 +160,7 @@
       "category": "Futebol",
       "league": "eredivisie",
       "color": ["red", "white"],
+      "description": "",
       "price": 137.99,
       "storage": 99
     },
@@ -156,6 +171,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
+      "description": "",
       "price": 140.99,
       "storage": 84
     },
@@ -166,6 +182,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["blue"],
+      "description": "",
       "price": 142.99,
       "storage": 79
     },
@@ -176,6 +193,7 @@
       "category": "Futebol",
       "league": "serie-a",
       "color": ["red", "yellow"],
+      "description": "",
       "price": 134.99,
       "storage": 96
     },
@@ -186,6 +204,7 @@
       "category": "Futebol",
       "league": "bundesliga",
       "color": ["red", "black"],
+      "description": "",
       "price": 136.99,
       "storage": 91
     },
@@ -196,6 +215,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["white", "red"],
+      "description": "",
       "price": 141.99,
       "storage": 94
     },
@@ -206,6 +226,7 @@
       "category": "Futebol",
       "league": "ligue-1",
       "color": ["blue", "white", "red"],
+      "description": "",
       "price": 139.99,
       "storage": 83
     },
@@ -216,6 +237,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
+      "description": "",
       "price": 137.99,
       "storage": 98
     },
@@ -226,6 +248,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["blue"],
+      "description": "",
       "price": 138.99,
       "storage": 86
     },
@@ -236,6 +259,7 @@
       "category": "Futebol",
       "league": "premier-league",
       "color": ["orange", "black"],
+      "description": "",
       "price": 135.99,
       "storage": 82
     },
@@ -246,6 +270,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["red", "white"],
+      "description": "",
       "price": 140.99,
       "storage": 89
     },
@@ -256,6 +281,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["orange"],
+      "description": "",
       "price": 133.99,
       "storage": 77
     },
@@ -266,6 +292,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["yellow"],
+      "description": "",
       "price": 142.99,
       "storage": 81
     },
@@ -276,6 +303,7 @@
       "category": "Futebol",
       "league": "la-liga",
       "color": ["green", "white"],
+      "description": "",
       "price": 134.99,
       "storage": 90
     },
@@ -286,6 +314,7 @@
       "category": "Futebol",
       "league": "primeira-liga",
       "color": ["blue", "white"],
+      "description": "",
       "price": 136.99,
       "storage": 75
     },
@@ -296,6 +325,7 @@
       "category": "Futebol",
       "league": "primeira-liga",
       "color": ["red", "white"],
+      "description": "",
       "price": 138.99,
       "storage": 88
     }

@@ -11,11 +11,12 @@ public class Product {
     private int storage;
     private String directory;
     private String league;
+    private String description;
 
     public Product() {
     }
 
-    public Product(long id, String team, String category, ArrayNode color, double price, int storage, String directory, String league) {
+    public Product(long id, String team, String category, ArrayNode color, double price, int storage, String directory, String league, String description) {
         this.id = id;
         this.team = team;
         this.category = category;
@@ -24,6 +25,7 @@ public class Product {
         this.storage = storage;
         this.directory = directory;
         this.league = league;
+        this.description = description;
     }
 
 
@@ -94,6 +96,14 @@ public class Product {
         this.league = league;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -103,6 +113,7 @@ public class Product {
                 ", category='" + category + '\'' +
                 ", league='" + league + '\'' +
                 ", color='" + color + '\'' +
+                ", description='" + description + '\'' +
                 ", price=" + price +
                 ", storage=" + storage +
                 '}';
