@@ -2,11 +2,9 @@ package com.ecom.phoenix.controllers;
 
 import com.ecom.phoenix.repositories.Product;
 import com.ecom.phoenix.services.ProductService;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +22,12 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productService.getProducts();
+    }
+
+    @PostMapping("/products/list")
+    public List<Product> getFilteredProducts(@RequestBody JsonNode params) {
+        System.out.println(params);
+        return productService.getFilteredProducts(params);
     }
 
     @GetMapping("/products/{id}")
