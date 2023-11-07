@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,12 +21,12 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts() throws IOException {
         return productService.getProducts();
     }
 
     @PostMapping("/products/list")
-    public List<Product> getFilteredProducts(@RequestBody JsonNode params) {
+    public List<Product> getFilteredProducts(@RequestBody JsonNode params) throws IOException {
         System.out.println(params);
         return productService.getFilteredProducts(params);
     }
