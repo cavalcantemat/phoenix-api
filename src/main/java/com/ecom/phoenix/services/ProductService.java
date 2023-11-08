@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
 
 @Service
 public class ProductService {
@@ -34,17 +31,16 @@ public class ProductService {
         }
     }
 
-
-    // TODO: 27/10/2023 search, filters, get all colors
-
     public List<Product> getFilteredProducts(JsonNode params) throws IOException {
         List<Product> allProducts = this.getAllProducts();
 
         JsonNode teamsFilters = params.get("teamsFilters");
         JsonNode leagueFilters = params.get("leaguesFilters");
         JsonNode colorsFilters = params.get("colorsFilters");
+        JsonNode orderBy = params.get("orderBy");
 
-        if (teamsFilters.isEmpty() && leagueFilters.isEmpty() && colorsFilters.isEmpty()) {
+        if (teamsFilters.isEmpty() && leagueFilters.isEmpty() && colorsFilters.isEmpty() & orderBy == null) {
+            sortBy(allProducts, "");
             return allProducts;
         }
 
@@ -79,9 +75,16 @@ public class ProductService {
             }
 
             if (colorsFilters.isArray() && !colorsFilters.isEmpty()) {
-                List<ArrayNode> productColors = Arrays.asList(product.getColor());
+                List<String> productColors = new ArrayList<>();
+                for (JsonNode colorNode : product.getColor()) {
+                    if (colorNode.isTextual()) {
+                        productColors.add(colorNode.asText());
+                    }
+                }
+
                 for (JsonNode colorNode : colorsFilters) {
-                    if (colorNode.isTextual() && productColors.contains(colorNode.asText())) {
+                    String filterColor = colorNode.asText();
+                    if (colorNode.isTextual() && productColors.contains(filterColor)) {
                         colorMatch = true;
                         break;
                     }
@@ -94,9 +97,30 @@ public class ProductService {
                 filteredProducts.add(product);
             }
         }
+
+        if (orderBy != null && orderBy.isTextual()) {
+            String orderByValue = orderBy.asText();
+            sortBy(filteredProducts, orderByValue);
+        }
+
         return filteredProducts;
     }
 
+    private void sortBy(List<Product> products, String orderBy) {
+        switch (orderBy) {
+            case "name":
+                products.sort(Comparator.comparing(Product::getTeam));
+                break;
+            case "low-price":
+                products.sort(Comparator.comparing(Product::getPrice));
+                break;
+            case "biggest-price":
+                products.sort(Comparator.comparing(Product::getPrice).reversed());
+                break;
+            default:
+                products.sort(Comparator.comparing(Product::getId));
+        }
+    }
 
     public Product getById(Integer id) {
         ObjectMapper objectMapper = new ObjectMapper();

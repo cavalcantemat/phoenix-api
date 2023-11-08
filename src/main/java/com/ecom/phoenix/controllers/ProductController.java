@@ -27,7 +27,6 @@ public class ProductController {
 
     @PostMapping("/products/list")
     public List<Product> getFilteredProducts(@RequestBody JsonNode params) throws IOException {
-        System.out.println(params);
         return productService.getFilteredProducts(params);
     }
 
