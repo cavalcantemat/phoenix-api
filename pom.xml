@@ -82,7 +82,6 @@
 <!--		</dependency>-->
 
 
-		<!-- Remova as dependências que não deseja usar -->
 	</dependencies>
 
 	<build>
