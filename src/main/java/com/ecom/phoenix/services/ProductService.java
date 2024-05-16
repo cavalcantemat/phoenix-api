@@ -1,24 +1,30 @@
 package com.ecom.phoenix.services;
 
-import com.ecom.phoenix.repositories.Product;
+import com.ecom.phoenix.models.Product;
+import com.ecom.phoenix.repositories.ProductRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class ProductService {
+
+    @Autowired
+    ProductRepository productRepository;
 
     public List<Product> getProducts() throws IOException {
         return getAllProducts();
     }
 
-    private List<Product> getAllProducts() throws IOException {
+    private List<Product> getAllProducts() {
         ObjectMapper objectMapper = new ObjectMapper();
         TypeReference<List<Product>> typeReference = new TypeReference<>() {};
         InputStream inputStream = TypeReference.class.getResourceAsStream("/data/products.json");
@@ -33,6 +39,8 @@ public class ProductService {
 
     public List<Product> getFilteredProducts(JsonNode params) throws IOException {
         List<Product> allProducts = this.getAllProducts();
+
+        if (allProducts == null) return null;
 
         JsonNode teamsFilters = params.get("teamsFilters");
         JsonNode leagueFilters = params.get("leaguesFilters");
@@ -76,10 +84,9 @@ public class ProductService {
 
             if (colorsFilters.isArray() && !colorsFilters.isEmpty()) {
                 List<String> productColors = new ArrayList<>();
-                for (JsonNode colorNode : product.getColor()) {
-                    if (colorNode.isTextual()) {
-                        productColors.add(colorNode.asText());
-                    }
+                //todo
+                for (String colorNode : product.getColor()) {
+                    productColors.add(colorNode);
                 }
 
                 for (JsonNode colorNode : colorsFilters) {
@@ -143,5 +150,9 @@ public class ProductService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Product save(Product product) {
+        return this.productRepository.save(product);
     }
 }
