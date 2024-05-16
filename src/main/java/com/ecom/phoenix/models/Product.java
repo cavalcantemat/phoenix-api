@@ -1,11 +1,10 @@
 package com.ecom.phoenix.models;
 
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
 @Table(name = "products", schema = "public")
 @Getter
 @Setter
-@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +23,8 @@ public class Product {
     private String directory;
     private String league;
     private String description;
-    //todo
-    @Type(value = JsonBinaryType.class)
+    //todo testar
+    @Type(JsonType.class)
     @Column(name = "color", columnDefinition = "jsonb")
     private List<String> color;
 
