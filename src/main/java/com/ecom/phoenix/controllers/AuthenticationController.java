@@ -5,7 +5,6 @@ import com.ecom.phoenix.dtos.RegisterDto;
 import com.ecom.phoenix.infra.security.TokenService;
 import com.ecom.phoenix.models.User;
 import com.ecom.phoenix.repositories.UserRepository;
-import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,7 +26,7 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Validated AuthenticationDto data) {
+    public ResponseEntity<Object> login(@RequestBody @Validated AuthenticationDto data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -36,8 +35,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(token);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity resgister(@RequestBody @Validated RegisterDto data) {
+    @PostMapping("/create")
+    public ResponseEntity<Object> resgister(@RequestBody @Validated RegisterDto data) {
         if (this.userRepository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
