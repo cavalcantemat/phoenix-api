@@ -23,7 +23,6 @@ public class Product {
     private String directory;
     private String league;
     private String description;
-    //todo testar
     @Type(JsonType.class)
     @Column(name = "color", columnDefinition = "jsonb")
     private List<String> color;

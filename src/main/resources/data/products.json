@@ -1,6 +1,5 @@
 [
     {
-      "id": 1,
       "team": "Barcelona",
       "directory": "barcelona",
       "category": "Futebol",
@@ -11,7 +10,6 @@
       "storage": 150
     },
     {
-      "id": 2,
       "team": "Real Madrid",
       "directory": "real-madrid",
       "category": "Futebol",
@@ -22,7 +20,6 @@
       "storage": 120
     },
     {
-      "id": 3,
       "team": "Manchester United",
       "directory": "manchester-united",
       "category": "Futebol",
@@ -33,7 +30,6 @@
       "storage": 100
     },
     {
-      "id": 4,
       "team": "Chelsea",
       "directory": "chelsea",
       "category": "Futebol",
@@ -44,7 +40,6 @@
       "storage": 110
     },
     {
-      "id": 5,
       "team": "Bayern Munich",
       "directory": "bayern",
       "category": "Futebol",
@@ -55,7 +50,6 @@
       "storage": 95
     },
     {
-      "id": 6,
       "team": "Paris Saint-Germain",
       "directory": "psg",
       "category": "Futebol",
@@ -66,7 +60,6 @@
       "storage": 105
     },
     {
-      "id": 7,
       "team": "Juventus",
       "directory": "juventus",
       "category": "Futebol",
@@ -77,7 +70,6 @@
       "storage": 85
     },
     {
-      "id": 8,
       "team": "Liverpool",
       "directory": "liverpool",
       "category": "Futebol",
@@ -88,7 +80,6 @@
       "storage": 92
     },
     {
-      "id": 9,
       "team": "Atletico Madrid",
       "directory": "atletico-de-madrid",
       "category": "Futebol",
@@ -99,7 +90,6 @@
       "storage": 78
     },
     {
-      "id": 10,
       "team": "Arsenal",
       "directory": "arsenal",
       "category": "Futebol",
@@ -110,7 +100,6 @@
       "storage": 88
     },
     {
-      "id": 11,
       "team": "Borussia Dortmund",
       "directory": "borussia-dortmund",
       "category": "Futebol",
@@ -121,7 +110,6 @@
       "storage": 93
     },
     {
-      "id": 12,
       "team": "Inter Milan",
       "directory": "inter-de-milao",
       "category": "Futebol",
@@ -132,7 +120,6 @@
       "storage": 87
     },
     {
-      "id": 13,
       "team": "AC Milan",
       "directory": "milan",
       "category": "Futebol",
@@ -143,7 +130,6 @@
       "storage": 80
     },
     {
-      "id": 14,
       "team": "Tottenham Hotspur",
       "directory": "tottenham-hotspur",
       "category": "Futebol",
@@ -154,7 +140,6 @@
       "storage": 97
     },
     {
-      "id": 15,
       "team": "Ajax",
       "directory": "ajax",
       "category": "Futebol",
@@ -165,7 +150,6 @@
       "storage": 99
     },
     {
-      "id": 16,
       "team": "Manchester City",
       "directory": "manchester-city",
       "category": "Futebol",
@@ -176,7 +160,6 @@
       "storage": 84
     },
     {
-      "id": 17,
       "team": "Napoli",
       "directory": "napoli",
       "category": "Futebol",
@@ -187,7 +170,6 @@
       "storage": 79
     },
     {
-      "id": 18,
       "team": "Roma",
       "directory": "roma",
       "category": "Futebol",
@@ -198,7 +180,6 @@
       "storage": 96
     },
     {
-      "id": 19,
       "team": "Bayer Leverkusen",
       "directory": "bayer-leverkusen",
       "category": "Futebol",
@@ -209,7 +190,6 @@
       "storage": 91
     },
     {
-      "id": 20,
       "team": "Sevilla",
       "directory": "sevilla",
       "category": "Futebol",
@@ -220,7 +200,6 @@
       "storage": 94
     },
     {
-      "id": 21,
       "team": "Lyon",
       "directory": "lyon",
       "category": "Futebol",
@@ -231,7 +210,6 @@
       "storage": 83
     },
     {
-      "id": 22,
       "team": "Everton",
       "directory": "everton",
       "category": "Futebol",
@@ -242,7 +220,6 @@
       "storage": 98
     },
     {
-      "id": 23,
       "team": "Leicester City",
       "directory": "leicester-city",
       "category": "Futebol",
@@ -253,7 +230,6 @@
       "storage": 86
     },
     {
-      "id": 24,
       "team": "Wolverhampton",
       "directory": "wolverhampton",
       "category": "Futebol",
@@ -264,7 +240,6 @@
       "storage": 82
     },
     {
-      "id": 25,
       "team": "Athletic Bilbao",
       "directory": "athletic-bilbao",
       "category": "Futebol",
@@ -275,7 +250,6 @@
       "storage": 89
     },
     {
-      "id": 26,
       "team": "Valencia",
       "directory": "valencia",
       "category": "Futebol",
@@ -286,7 +260,6 @@
       "storage": 77
     },
     {
-      "id": 27,
       "team": "Villarreal",
       "directory": "villarreal",
       "category": "Futebol",
@@ -297,7 +270,6 @@
       "storage": 81
     },
     {
-      "id": 28,
       "team": "Celtic",
       "directory": "celtic",
       "category": "Futebol",
@@ -308,7 +280,6 @@
       "storage": 90
     },
     {
-      "id": 29,
       "team": "Porto",
       "directory": "porto",
       "category": "Futebol",
@@ -319,7 +290,6 @@
       "storage": 75
     },
     {
-      "id": 30,
       "team": "Benfica",
       "directory": "benfica",
       "category": "Futebol",

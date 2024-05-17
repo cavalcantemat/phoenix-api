@@ -2,17 +2,16 @@ package com.ecom.phoenix.services;
 
 import com.ecom.phoenix.models.Product;
 import com.ecom.phoenix.repositories.ProductRepository;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.ecom.phoenix.utils.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -20,27 +19,12 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> getProducts() throws IOException {
-        return getAllProducts();
+    public List<Product> getProducts() {
+        return this.productRepository.findAll();
     }
 
-    private List<Product> getAllProducts() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<List<Product>> typeReference = new TypeReference<>() {};
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/products.json");
-
-        try {
-            return objectMapper.readValue(inputStream, typeReference);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public List<Product> getFilteredProducts(JsonNode params) throws IOException {
-        List<Product> allProducts = this.getAllProducts();
-
-        if (allProducts == null) return null;
+    public List<Product> getFilteredProducts(JsonNode params) {
+        List<Product> allProducts = this.productRepository.findAll();
 
         JsonNode teamsFilters = params.get("teamsFilters");
         JsonNode leagueFilters = params.get("leaguesFilters");
@@ -83,11 +67,7 @@ public class ProductService {
             }
 
             if (colorsFilters.isArray() && !colorsFilters.isEmpty()) {
-                List<String> productColors = new ArrayList<>();
-                //todo
-                for (String colorNode : product.getColor()) {
-                    productColors.add(colorNode);
-                }
+                List<String> productColors = new ArrayList<>(product.getColor());
 
                 for (JsonNode colorNode : colorsFilters) {
                     String filterColor = colorNode.asText();
@@ -129,30 +109,33 @@ public class ProductService {
         }
     }
 
-    public Product getById(Integer id) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<List<Product>> typeReference = new TypeReference<>() {};
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/data/products.json");
+    public Optional<Product> findById(Long id) {
+        return this.productRepository.findById(id);
+    }
 
-        try {
-            List<Product> products = objectMapper.readValue(inputStream, typeReference);
-            Product foundProduct = null;
-
-            for (Product product : products) {
-                if (product.getId() == id) {
-                    foundProduct = product;
-                    break;
-                }
-            }
-
-            return foundProduct;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Product findByTeam(String team) {
+        return this.productRepository.findByTeam(team);
     }
 
     public Product save(Product product) {
         return this.productRepository.save(product);
+    }
+
+    @Transactional
+    public Product edit(Long id, Product newProduct) {
+        return productRepository.findById(id)
+            .map(product -> {
+                product.setTeam(newProduct.getTeam());
+                product.setColor(newProduct.getColor());
+                product.setCategory(newProduct.getCategory());
+                product.setLeague(newProduct.getLeague());
+                product.setPrice(newProduct.getPrice());
+                product.setStorage(newProduct.getStorage());
+                product.setDescription(newProduct.getDescription());
+                product.setDirectory(newProduct.getDirectory());
+
+                return productRepository.save(product);
+            })
+            .orElseThrow(() -> new ResourceNotFoundException("Product not found: " + id));
     }
 }

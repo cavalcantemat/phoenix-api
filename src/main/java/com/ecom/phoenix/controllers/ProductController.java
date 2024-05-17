@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -22,23 +22,29 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<Product> getAllProducts() throws IOException {
+    public List<Product> getAllProducts() {
         return productService.getProducts();
     }
 
     @PostMapping("/list")
-    public List<Product> getFilteredProducts(@RequestBody JsonNode params) throws IOException {
+    public List<Product> getFilteredProducts(@RequestBody JsonNode params) {
         return productService.getFilteredProducts(params);
     }
 
     @GetMapping("/{id}")
-    public Product getById(@PathVariable Integer id) {
-        return productService.getById(id);
+    public Optional<Product> getById(@PathVariable Long id) {
+        return productService.findById(id);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody Product product) {
+    @PostMapping("/create")
+    public ResponseEntity<Object> register(@RequestBody Product product) {
         Product savedProduct = this.productService.save(product);
+
+        return ResponseEntity.ok(savedProduct.getId());
+    }
+    @PatchMapping("/{id}")
+    public ResponseEntity<Object> edit(@PathVariable Long id, @RequestBody Product product) {
+        Product savedProduct = this.productService.edit(id, product);
 
         return ResponseEntity.ok(savedProduct.getId());
     }
