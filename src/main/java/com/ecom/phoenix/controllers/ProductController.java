@@ -1,5 +1,7 @@
 package com.ecom.phoenix.controllers;
 
+import com.ecom.phoenix.dtos.ProductToShow;
+import com.ecom.phoenix.dtos.ProductsToPurchase;
 import com.ecom.phoenix.models.Product;
 import com.ecom.phoenix.services.ProductService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -8,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -32,20 +33,27 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> getById(@PathVariable Long id) {
+    public ProductToShow getById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> register(@RequestBody Product product) {
-        Product savedProduct = this.productService.save(product);
+    public ResponseEntity<Object> create(@RequestBody ProductToShow product) {
+        Product savedProduct = this.productService.create(product);
 
         return ResponseEntity.ok(savedProduct.getId());
     }
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> edit(@PathVariable Long id, @RequestBody Product product) {
-        Product savedProduct = this.productService.edit(id, product);
+    public ResponseEntity<Object> edit(@PathVariable Long id, @RequestBody ProductToShow product) {
+        ResponseEntity<Object> savedProduct = this.productService.edit(id, product);
 
-        return ResponseEntity.ok(savedProduct.getId());
+        return ResponseEntity.ok(savedProduct);
+    }
+
+    @PostMapping("/purchase")
+    public ResponseEntity<Object> purchase(@RequestBody List<ProductsToPurchase> products) {
+        ResponseEntity<Object> purchase = this.productService.purchase(products);
+
+        return ResponseEntity.ok(purchase);
     }
 }
