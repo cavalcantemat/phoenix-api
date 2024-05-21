@@ -36,7 +36,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> resgister(@RequestBody @Validated RegisterDto data) {
+    public ResponseEntity<Object> create(@RequestBody @Validated RegisterDto data) {
         if (this.userRepository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
