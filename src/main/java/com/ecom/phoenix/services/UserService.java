@@ -21,9 +21,6 @@ public class UserService {
         return (User) this.userRepository.findByLogin(login);
     }
 
-    public User register(User user) {
-        return this.userRepository.save(user);
-    }
 
     @Transactional
     public User edit(String id, User newUser) {

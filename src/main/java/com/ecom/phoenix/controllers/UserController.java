@@ -16,11 +16,6 @@ public class UserController {
         return this.userService.findById(id);
     }
 
-    @PostMapping("/create")
-    public User register(@RequestBody User user) {
-        return this.userService.register(user);
-    }
-
     @PostMapping("/{id}")
     public User edit(@PathVariable String id, @RequestBody User user) {
         return this.userService.edit(id, user);
