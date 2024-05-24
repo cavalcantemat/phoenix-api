@@ -25,7 +25,7 @@ public class CreateUser implements CommandLineRunner {
         if (this.userService.findByLogin("admin") == null) {
             //enter a password to create a sysadmin to test locally
             String password = "";
-            this.authenticationController.create(new RegisterDto("admin", password, UserRole.ADMIN));
+            this.authenticationController.create(new RegisterDto("admin","admin","admin@gmail.com" , password, UserRole.ADMIN));
         }
     }
 }
