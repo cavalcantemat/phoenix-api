@@ -1,6 +1,7 @@
 package com.ecom.phoenix.controllers;
 
 import com.ecom.phoenix.dtos.ProductToShow;
+import com.ecom.phoenix.dtos.ProductsFilter;
 import com.ecom.phoenix.dtos.ProductsToPurchase;
 import com.ecom.phoenix.models.Product;
 import com.ecom.phoenix.services.ProductService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -28,8 +30,8 @@ public class ProductController {
     }
 
     @PostMapping("/list")
-    public List<Product> getFilteredProducts(@RequestBody JsonNode params) {
-        return productService.getFilteredProducts(params);
+    public List<ProductToShow> getFilteredProducts(@RequestBody ProductsFilter filters) {
+        return productService.getFilteredProducts(filters);
     }
 
     @GetMapping("/{id}")
@@ -51,8 +53,8 @@ public class ProductController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<Object> purchase(@RequestBody List<ProductsToPurchase> products) {
-        ResponseEntity<Object> purchase = this.productService.purchase(products);
+    public ResponseEntity<Object> purchase(@PathVariable String userId, @RequestBody List<ProductsToPurchase> products) throws IOException {
+        ResponseEntity<Object> purchase = this.productService.purchase(userId, products);
 
         return ResponseEntity.ok(purchase);
     }

@@ -1,27 +1,48 @@
 package com.ecom.phoenix.services;
 
-import com.ecom.phoenix.dtos.ProductToShow;
-import com.ecom.phoenix.dtos.ProductsToPurchase;
+import com.ecom.phoenix.dtos.*;
 import com.ecom.phoenix.models.Product;
 import com.ecom.phoenix.models.Stock;
 import com.ecom.phoenix.repositories.ProductRepository;
 import com.ecom.phoenix.repositories.StockRepository;
+import com.ecom.phoenix.repositories.UserRepository;
 import com.ecom.phoenix.utils.ResourceNotFoundException;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductService {
 
     @Autowired
     ProductRepository productRepository;
+    @Autowired
     StockRepository stockRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    DataSource dataSource;
+
 
     public List<Product> getProducts() {
         return this.productRepository.findAll();
@@ -49,7 +70,7 @@ public class ProductService {
 
         product = productRepository.save(product);
 
-        Stock stock = stockRepository.findByProductId(product.getId());
+        Stock stock = this.stockRepository.findByProductId(product.getId());
         if (stock == null) {
             stock = new Stock();
         }
@@ -59,7 +80,7 @@ public class ProductService {
         stock.setSize(productToShow.getSize());
         stock.setPrice(productToShow.getPrice());
 
-        stockRepository.save(stock);
+        this.stockRepository.save(stock);
 
         return product;
     }
@@ -70,7 +91,7 @@ public class ProductService {
         productById.setTeam(newProduct.getTeam());
         productById.setDescription(newProduct.getDescription());
 
-        Stock stock = stockRepository.findByProductId(id);
+        Stock stock = this.stockRepository.findByProductId(id);
         stock.setSize(newProduct.getSize());
         stock.setQuantity(newProduct.getQuantity());
         stock.setPrice(newProduct.getPrice());
@@ -87,10 +108,9 @@ public class ProductService {
     }
 
     @Transactional
-    public ResponseEntity<Object> purchase(List<ProductsToPurchase> products) {
-        //todo integrate email service
+    public ResponseEntity<Object> purchase(String userId, List<ProductsToPurchase> products) throws IOException {
         for (ProductsToPurchase product : products) {
-            Stock oldProduct = stockRepository.findById(product.getId())
+            Stock oldProduct = this.stockRepository.findById(product.getId())
                     .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
             if (oldProduct.getQuantity() < product.getQuantity()) {
@@ -99,96 +119,88 @@ public class ProductService {
             }
             oldProduct.setQuantity(oldProduct.getQuantity() - product.getQuantity());
 
-            stockRepository.save(oldProduct);
+            this.stockRepository.save(oldProduct);
         }
 
+        ObjectMapper mapper = new ObjectMapper();
+        EmailDto emailDto = new EmailDto();
+        emailDto.setTo(this.userRepository.findById(userId).getEmail());
+        emailDto.setSubject("Confirmação de Compra");
+        emailDto.setBody("Olá,\n\nSua compra foi efetivada com sucesso! Agradecemos por escolher nossos serviços.\n\nDetalhes do pedido:\n- Produto: Nome do Produto\n- Quantidade: 1\n- Valor: R$ 100,00\n\nSeu pedido será processado em breve e você receberá uma notificação assim que for enviado.\n\nAtenciosamente,\nEquipe de Vendas");
+
+
+        HttpPost post = new HttpPost("http://localhost:8080/api/email/send");
+        post.setEntity(new StringEntity(mapper.writeValueAsString(emailDto), ContentType.APPLICATION_JSON));
+
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+            try (CloseableHttpResponse response = httpclient.execute(post)) {
+                if (response.getCode() != 200) {
+                    throw new RuntimeException("error while send email");
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("error while send email", e);
+        }
 
         return ResponseEntity.ok("Compra realizada com sucesso");
     }
 
-    public List<Product> getFilteredProducts(JsonNode params) {
-        List<Product> allProducts = this.productRepository.findAll();
-        return allProducts;
-//        JsonNode teamsFilters = params.get("teamsFilters");
-//        JsonNode leagueFilters = params.get("leaguesFilters");
-//        JsonNode colorsFilters = params.get("colorsFilters");
-//        JsonNode orderBy = params.get("orderBy");
-//
-//        if (teamsFilters.isEmpty() && leagueFilters.isEmpty() && colorsFilters.isEmpty() & orderBy == null) {
-//            sortBy(allProducts, "");
-//            return allProducts;
-//        }
-//
-//        List<Product> filteredProducts = new ArrayList<>();
-//        for (Product product : allProducts) {
-//            boolean teamMatch = false;
-//            boolean leagueMatch = false;
-//            boolean colorMatch = false;
-//
-//            if (leagueFilters.isArray() && !leagueFilters.isEmpty()) {
-//                String productLeague = product.getLeague();
-//                for (JsonNode league : leagueFilters) {
-//                    if (league.isTextual() && league.asText().equals(productLeague)) {
-//                        leagueMatch = true;
-//                        break;
-//                    }
-//                }
-//            } else {
-//                leagueMatch = true;
-//            }
-//
-//            if (teamsFilters.isArray() && !teamsFilters.isEmpty()) {
-//                String productTeam = product.getDirectory();
-//                for (JsonNode teamNode : teamsFilters) {
-//                    if (teamNode.isTextual() && teamNode.asText().equals(productTeam)) {
-//                        teamMatch = true;
-//                        break;
-//                    }
-//                }
-//            } else {
-//                teamMatch = true;
-//            }
-//
-//            if (colorsFilters.isArray() && !colorsFilters.isEmpty()) {
-//                List<String> productColors = new ArrayList<>(product.getColor());
-//
-//                for (JsonNode colorNode : colorsFilters) {
-//                    String filterColor = colorNode.asText();
-//                    if (colorNode.isTextual() && productColors.contains(filterColor)) {
-//                        colorMatch = true;
-//                        break;
-//                    }
-//                }
-//            } else {
-//                colorMatch = true;
-//            }
+    public String buildSqlQuery(ProductsFilter filters) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM products p " +
+                "LEFT JOIN stock s ON s.product_id = p.id WHERE 0 = 0 ");
 
-//            if (teamMatch && leagueMatch && colorMatch) {
-//                filteredProducts.add(product);
-//            }
-//        }
-//
-//        if (orderBy != null && orderBy.isTextual()) {
-//            String orderByValue = orderBy.asText();
-//            sortBy(filteredProducts, orderByValue);
-//        }
-//
-//        return filteredProducts;
+        for (Filter filter : filters.getFilters()) {
+            sql.append("AND ");
+            String field = filter.getField();
+            Object value = filter.getValue();
+
+            if ("team".equals(field)) {
+                sql.append("p.team = '").append(value).append("' ");
+            } else if ("size".equals(field)) {
+                sql.append("s.size IN ('").append(String.join("', '", (List<String>) value)).append("') ");
+            } else if ("colors".equals(field)) {
+                sql.append("s.color IN ('").append(String.join("', '", (List<String>) value)).append("') ");
+            } else if ("price".equals(field)) {
+                List<PriceRange> priceRanges = (List<PriceRange>) value;
+                if (!priceRanges.isEmpty()) {
+                    sql.append("(");
+                    for (PriceRange priceRange : priceRanges) {
+                        sql.append("p.price BETWEEN ").append(priceRange.getMin()).append(" AND ").append(priceRange.getMax()).append(" OR ");
+                    }
+                    sql.delete(sql.length() - 4, sql.length());
+                    sql.append(") ");
+                }
+            }
+        }
+
+    Sort sort = filters.getSort();
+        if (sort != null) {
+        sql.append("ORDER BY ").append(sort.getField()).append(" ").append(sort.getDir()).append(" ");
     }
 
-    private void sortBy(List<Product> products, String orderBy) {
-//        switch (orderBy) {
-//            case "name":
-//                products.sort(Comparator.comparing(Product::getTeam));
-//                break;
-//            case "low-price":
-//                products.sort(Comparator.comparing(Product::getPrice));
-//                break;
-//            case "biggest-price":
-//                products.sort(Comparator.comparing(Product::getPrice).reversed());
-//                break;
-//            default:
-//                products.sort(Comparator.comparing(Product::getId));
-//        }
+        return sql.toString();
+    }
+
+
+    public List<ProductToShow> getFilteredProducts(ProductsFilter filters) {
+        String sqlQuery = buildSqlQuery(filters);
+
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sqlQuery);
+
+        List<ProductToShow> list = new ArrayList<>();
+        for (Map<String,Object> row : rows) {
+            ProductToShow product = new ProductToShow();
+            product.setId(Long.valueOf(String.valueOf(row.get("id"))));
+            product.setTeam(String.valueOf(row.get("team")));
+            product.setDescription(String.valueOf(row.get("color")));
+            product.setPrice(new BigDecimal(String.valueOf(row.get("price") )));
+            product.setSize(String.valueOf(row.get("size")));
+            product.setQuantity(Long.parseLong(String.valueOf(row.get("quantity"))));
+
+            list.add(product);
+        }
+
+        return list;
     }
 }
