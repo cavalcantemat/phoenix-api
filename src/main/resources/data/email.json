@@ -1,0 +1,5 @@
+{
+  "to": "cliente@exemplo.com",
+  "subject": "Confirmação de Compra",
+  "body": "Olá,\n\nSua compra foi efetivada com sucesso! Agradecemos por escolher nossos serviços.\n\nDetalhes do pedido:\n- Produto: Nome do Produto\n- Quantidade: 1\n- Valor: R$ 100,00\n\nSeu pedido será processado em breve e você receberá uma notificação assim que for enviado.\n\nAtenciosamente,\nEquipe de Vendas"
+}
