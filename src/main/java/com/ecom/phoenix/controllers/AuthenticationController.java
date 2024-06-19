@@ -5,6 +5,7 @@ import com.ecom.phoenix.dtos.RegisterDto;
 import com.ecom.phoenix.infra.security.TokenService;
 import com.ecom.phoenix.models.User;
 import com.ecom.phoenix.repositories.UserRepository;
+import com.ecom.phoenix.utils.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,10 +42,15 @@ public class AuthenticationController {
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 
-        User newUser = new User(data.login(), data.name(), data.email(), encryptedPassword, data.role());
+        User newUser = new User(data.login(), data.name(), data.email(), encryptedPassword, UserRole.USER);
 
         this.userRepository.save(newUser);
 
-        return ResponseEntity.ok().build();
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(token);
     }
 }

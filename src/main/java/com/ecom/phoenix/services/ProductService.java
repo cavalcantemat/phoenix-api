@@ -8,9 +8,6 @@ import com.ecom.phoenix.repositories.StockRepository;
 import com.ecom.phoenix.repositories.UserRepository;
 import com.ecom.phoenix.utils.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -28,8 +25,10 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -49,14 +48,16 @@ public class ProductService {
     }
 
 
-    public ProductToShow findById(Long id) {
-        return this.productRepository.findByIdToShow(id);
-    }
+    public Map<String, Object> findById(Long id) {
 
-    public Product findByTeam(String team) {
-        return this.productRepository.findByTeam(team);
-    }
+        Map<String, Object> product = productRepository.findByIdToShow(id).entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
+        product.put("size", productRepository.findSizeById(id));
+
+        return product;
+    }
 
     @Transactional
     public Product create(ProductToShow productToShow) {
@@ -146,8 +147,8 @@ public class ProductService {
     }
 
     public String buildSqlQuery(ProductsFilter filters) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM products p " +
-                "LEFT JOIN stock s ON s.product_id = p.id WHERE 0 = 0 ");
+        StringBuilder sql = new StringBuilder("SELECT p.*, s.price FROM products p " +
+                "LEFT JOIN stock s ON s.product_id = p.id WHERE 0 = 0\n");
 
         for (Filter filter : filters.getFilters()) {
             sql.append("AND ");
@@ -155,11 +156,11 @@ public class ProductService {
             Object value = filter.getValue();
 
             if ("team".equals(field)) {
-                sql.append("p.team = '").append(value).append("' ");
+                sql.append("p.team IN ('").append(String.join("', '", (List<String>) value)).append("') \n");
             } else if ("size".equals(field)) {
-                sql.append("s.size IN ('").append(String.join("', '", (List<String>) value)).append("') ");
+                sql.append("s.size IN ('").append(String.join("', '", (List<String>) value)).append("') \n");
             } else if ("colors".equals(field)) {
-                sql.append("s.color IN ('").append(String.join("', '", (List<String>) value)).append("') ");
+                sql.append("s.color ?| array['").append(String.join("', '", (List<String>) value)).append("'] \n");
             } else if ("price".equals(field)) {
                 List<PriceRange> priceRanges = (List<PriceRange>) value;
                 if (!priceRanges.isEmpty()) {
@@ -168,15 +169,17 @@ public class ProductService {
                         sql.append("p.price BETWEEN ").append(priceRange.getMin()).append(" AND ").append(priceRange.getMax()).append(" OR ");
                     }
                     sql.delete(sql.length() - 4, sql.length());
-                    sql.append(") ");
+                    sql.append(") \n");
                 }
             }
         }
 
-    Sort sort = filters.getSort();
+        sql.append("GROUP BY p.id, s.color, s.price");
+
+        Sort sort = filters.getSort();
         if (sort != null) {
-        sql.append("ORDER BY ").append(sort.getField()).append(" ").append(sort.getDir()).append(" ");
-    }
+            sql.append("\nORDER BY ").append(sort.getField()).append(" ").append(sort.getDir()).append(" \n");
+        }
 
         return sql.toString();
     }
@@ -193,14 +196,21 @@ public class ProductService {
             ProductToShow product = new ProductToShow();
             product.setId(Long.valueOf(String.valueOf(row.get("id"))));
             product.setTeam(String.valueOf(row.get("team")));
-            product.setDescription(String.valueOf(row.get("color")));
             product.setPrice(new BigDecimal(String.valueOf(row.get("price") )));
             product.setSize(String.valueOf(row.get("size")));
-            product.setQuantity(Long.parseLong(String.valueOf(row.get("quantity"))));
 
             list.add(product);
         }
 
         return list;
+    }
+
+    public Map<String, Object> filterOptions() {
+        Map<String, Object> options = new HashMap<>();
+
+        options.put("teams", productRepository.getAllTeams());
+        options.put("color", productRepository.getAllColors());
+
+        return options;
     }
 }
