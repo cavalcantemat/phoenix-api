@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -35,7 +36,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductToShow getById(@PathVariable Long id) {
+    public Map<String, Object> getById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
@@ -57,5 +58,10 @@ public class ProductController {
         ResponseEntity<Object> purchase = this.productService.purchase(userId, products);
 
         return ResponseEntity.ok(purchase);
+    }
+
+    @GetMapping("/filterOptions")
+    public Map<String, Object> filterOptions() {
+        return productService.filterOptions();
     }
 }
