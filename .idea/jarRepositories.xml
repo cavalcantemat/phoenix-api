@@ -12,6 +12,11 @@
       <option name="url" value="http://172.16.0.200/nexus/repository/maven-public" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="maven_central" />
+      <option name="name" value="Maven Central" />
+      <option name="url" value="http://172.16.0.200/nexus/repository/maven-public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="" />
       <option name="name" value="" />
       <option name="url" value="http://172.16.0.200/nexus/repository/maven-public" />
