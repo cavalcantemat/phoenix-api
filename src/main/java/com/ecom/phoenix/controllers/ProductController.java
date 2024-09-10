@@ -7,6 +7,7 @@ import com.ecom.phoenix.models.Product;
 import com.ecom.phoenix.services.ProductService;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,10 +55,14 @@ public class ProductController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<Object> purchase(@PathVariable String userId, @RequestBody List<ProductsToPurchase> products) throws IOException {
-        ResponseEntity<Object> purchase = this.productService.purchase(userId, products);
+    public ResponseEntity<Object> purchase(@RequestParam("products") String products, @RequestParam("token") String token) {
 
-        return ResponseEntity.ok(purchase);
+        try {
+            ResponseEntity<Object> purchase = this.productService.purchase(token, products);
+            return ResponseEntity.ok(purchase);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/filterOptions")

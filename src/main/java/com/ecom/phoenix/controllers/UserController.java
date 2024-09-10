@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/user")
@@ -18,8 +19,8 @@ public class UserController {
         return this.userService.findById(id);
     }
 
-    @PostMapping("/update")
-    public ResponseEntity<Object> edit(@RequestBody User user) {
+    @PostMapping(value = "/update")
+    public ResponseEntity<Object> edit(@ModelAttribute User user) {
         try {
             userService.edit(user);
             return ResponseEntity.ok().build();

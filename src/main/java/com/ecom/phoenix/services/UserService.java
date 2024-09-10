@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class UserService {
     @Autowired
@@ -36,7 +38,7 @@ public class UserService {
             user.setName(newUser.getName());
             user.setEmail(newUser.getEmail());
 
-            if (newUser.getPassword() != null) {
+            if (newUser.getPassword() != null && !Objects.equals(newUser.getPassword(), "")) {
                 String encryptedPassword = new BCryptPasswordEncoder().encode(newUser.getPassword());
                 user.setPassword(encryptedPassword);
             }
@@ -59,6 +61,10 @@ public class UserService {
             }
         }
 
+        return userLogged(token);
+    }
+
+    public User userLogged(String token) {
         String login = tokenService.validateToken(token);
         return findByLogin(login);
     }

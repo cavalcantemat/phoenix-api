@@ -24,11 +24,9 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 @Service
 public class ProductService {
@@ -41,6 +39,9 @@ public class ProductService {
     UserRepository userRepository;
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    UserService userService;
 
 
     public List<Product> getProducts() {
@@ -109,7 +110,12 @@ public class ProductService {
     }
 
     @Transactional
-    public ResponseEntity<Object> purchase(String userId, List<ProductsToPurchase> products) throws IOException {
+    public ResponseEntity<Object> purchase(String token, String productsJSON) throws IOException {
+        String userEmail = userService.userLogged(token).getEmail();
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<ProductsToPurchase> products = mapper.readValue(productsJSON, new TypeReference<List<ProductsToPurchase>>() {});
+
         for (ProductsToPurchase product : products) {
             Stock oldProduct = this.stockRepository.findById(product.getId())
                     .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -123,25 +129,25 @@ public class ProductService {
             this.stockRepository.save(oldProduct);
         }
 
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper2 = new ObjectMapper();
         EmailDto emailDto = new EmailDto();
-        emailDto.setTo(this.userRepository.findById(userId).getEmail());
+        emailDto.setTo(userEmail);
         emailDto.setSubject("Confirmação de Compra");
         emailDto.setBody("Olá,\n\nSua compra foi efetivada com sucesso! Agradecemos por escolher nossos serviços.\n\nDetalhes do pedido:\n- Produto: Nome do Produto\n- Quantidade: 1\n- Valor: R$ 100,00\n\nSeu pedido será processado em breve e você receberá uma notificação assim que for enviado.\n\nAtenciosamente,\nEquipe de Vendas");
 
-
-        HttpPost post = new HttpPost("http://localhost:8080/api/email/send");
-        post.setEntity(new StringEntity(mapper.writeValueAsString(emailDto), ContentType.APPLICATION_JSON));
-
-        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
-            try (CloseableHttpResponse response = httpclient.execute(post)) {
-                if (response.getCode() != 200) {
-                    throw new RuntimeException("error while send email");
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("error while send email", e);
-        }
+        // TODO: ao retornar um erro, colocar essa parada em um Map e fazer uma tentativa de reenvio a cada 5min?
+//        HttpPost post = new HttpPost("http://localhost:8080/api/email/send");
+//        post.setEntity(new StringEntity(mapper2.writeValueAsString(emailDto), ContentType.APPLICATION_JSON));
+//
+//        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+//            try (CloseableHttpResponse response = httpclient.execute(post)) {
+//                if (response.getCode() != 200) {
+//                    throw new RuntimeException("error while send email");
+//                }
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException("error while send email", e);
+//        }
 
         return ResponseEntity.ok("Compra realizada com sucesso");
     }
